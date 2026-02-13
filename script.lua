@@ -1,42 +1,98 @@
-local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
-local Window = Rayfield:CreateWindow({
-   Name = "Menu Cua Bien Dep Zai",
-   LoadingTitle = "Dang tai Script...",
-   LoadingSubtitle = "by Biendepzai",
-   ConfigurationSaving = {
-      Enabled = true,
-      FolderName = "BiendepzaiHub",
-      FileName = "Config"
-   }
+local Window = Fluent:CreateWindow({
+    Title = "PHAN DINH BIEN",
+    SubTitle = "by Biendepzai",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = false,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
 })
 
-local MainTab = Window:CreateTab("Tính năng chính", 4483362458)
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main Hub", Icon = "home" }),
+    SeaKing = Window:AddTab({ Title = "SeaKing", Icon = "star" }),
+    Bien = Window:AddTab({ Title = "Biển", Icon = "http://www.roblox.com/asset/?id=90296556326330" })
+}
 
-local Section = MainTab:CreateSection("Người chơi")
-
-local Slider = MainTab:CreateSlider({
-   Name = "Tốc độ chạy",
-   Range = {16, 500},
-   Increment = 1,
-   Suffix = "Tốc độ",
-   CurrentValue = 100,
-   Flag = "WS_Slider",
-   Callback = function(Value)
-      game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-   end,
+-- Tab Main Hub
+Tabs.Main:AddParagraph({ Title = "SeaKing 2012", Content = "Credit by SeaKing 2012" })
+Tabs.Main:AddButton({
+    Title = "Redz Hub",
+    Description = "Click to run Redz Hub",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/huy384/redzHub/refs/heads/main/redzHub.lua"))() end
+})
+Tabs.Main:AddButton({
+    Title = "Server Finder",
+    Description = "Click to run Server Finder",
+    Callback = function() loadstring(game:HttpGet("https://rise-evo.xyz/apiv3/ServerFinder.lua"))() end
+})
+Tabs.Main:AddButton({
+    Title = "Xeter hub V4",
+    Description = "Click to run Xeter hub V4",
+    Callback = function() 
+        getgenv().Version = "V4"
+        getgenv().Team = "Marines"
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))() 
+    end
 })
 
-local Button = MainTab:CreateButton({
-   Name = "Nhảy cao",
-   Callback = function()
-      game.Players.LocalPlayer.Character.Humanoid.JumpPower = 200
-   end,
+-- Tab SeaKing
+Tabs.SeaKing:AddButton({
+    Title = "QuanTum Hub",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))() end
+})
+Tabs.SeaKing:AddButton({
+    Title = "Bacon Hub",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/vinh129150/hack/refs/heads/main/BaconHub.lua"))() end
+})
+Tabs.SeaKing:AddButton({
+    Title = "Huylovemy / key : Huydepzai",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Bear-hud-t-h/refs/heads/main/Huylovevkmy"))() end
 })
 
-Rayfield:Notify({
-   Title = "Thành công!",
-   Content = "Script đã kích hoạt!",
-   Duration = 5,
-   Image = 4483362458,
+-- Tab Biển (Đã chuyển 3 script qua đây)
+Tabs.Bien:AddButton({
+    Title = "Blue X",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))() end
 })
+Tabs.Bien:AddButton({
+    Title = "Gravity Hub",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-GravityHub/BloxFruit/refs/heads/main/Main.lua"))() end
+})
+Tabs.Bien:AddButton({
+    Title = "Turbo Fix Lag",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main/FixLag.lua"))() end
+})
+
+-- PHẦN FIX NÚT TOGGLE
+local ScreenGui = Instance.new("ScreenGui")
+local ToggleButton = Instance.new("ImageButton") 
+local UICorner = Instance.new("UICorner")
+
+ScreenGui.Parent = game:GetService("CoreGui")
+ScreenGui.Name = "PhanDinhBienToggle"
+
+ToggleButton.Parent = ScreenGui
+ToggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ToggleButton.BackgroundTransparency = 0.2 -- Làm hơi trong suốt cho đẹp
+ToggleButton.Size = UDim2.new(0, 60, 0, 60)
+ToggleButton.Position = UDim2.new(0, 20, 0.5, -30)
+
+-- Thử dùng định dạng này để Roblox tự convert DecalID sang ImageID
+ToggleButton.Image = "https://www.roblox.com/asset-thumbnail/image?assetId=90296556326330&width=420&height=420&format=png"
+
+ToggleButton.Active = true
+ToggleButton.Draggable = true
+
+UICorner.CornerRadius = UDim.new(0, 15)
+UICorner.Parent = ToggleButton
+
+local IsOpen = true
+ToggleButton.MouseButton1Click:Connect(function()
+    IsOpen = not IsOpen
+    Window:Minimize()
+end)
+
+Window:SelectTab(1)
