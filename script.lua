@@ -16,7 +16,7 @@ local Tabs = {
     Bien = Window:AddTab({ Title = "Biển", Icon = "rbxassetid://73480053684273" })
 }
 
--- ================= TAB MAIN HUB =================
+-- TAB MAIN
 Tabs.Main:AddParagraph({ Title = "SeaKing 2012", Content = "Credit by SeaKing 2012" })
 
 Tabs.Main:AddButton({
@@ -38,7 +38,7 @@ Tabs.Main:AddButton({
     end
 })
 
--- ================= TAB SEAKING =================
+-- TAB SEAKING
 Tabs.SeaKing:AddButton({
     Title = "QuanTum Hub",
     Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))() end
@@ -54,7 +54,7 @@ Tabs.SeaKing:AddButton({
     Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Bear-hud-t-h/refs/heads/main/Huylovevkmy"))() end
 })
 
--- ================= TAB BIỂN =================
+-- TAB BIỂN
 Tabs.Bien:AddButton({
     Title = "Blue X",
     Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))() end
@@ -70,7 +70,7 @@ Tabs.Bien:AddButton({
     Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main/FixLag.lua"))() end
 })
 
--- ================= NÚT BẬT/TẮT (TOGGLE) =================
+-- PHẦN NÚT TOGGLE (BẮT BUỘC PHẢI CÓ ĐỂ MỞ LẠI MENU)
 local ScreenGui = Instance.new("ScreenGui")
 local ToggleButton = Instance.new("ImageButton") 
 local UICorner = Instance.new("UICorner")
@@ -83,10 +83,7 @@ ToggleButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 ToggleButton.BackgroundTransparency = 0.3
 ToggleButton.Size = UDim2.new(0, 60, 0, 60)
 ToggleButton.Position = UDim2.new(0, 20, 0.5, -30)
-
--- Thử dùng link trực tiếp để ép Roblox hiện ảnh
-ToggleButton.Image = "http://www.roblox.com/asset/?id=73480053684273"
-
+ToggleButton.Image = "rbxassetid://73480053684273"
 ToggleButton.Active = true
 ToggleButton.Draggable = true
 
