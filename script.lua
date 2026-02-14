@@ -1,49 +1,74 @@
-local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/7YSe7en/Seven_Lib/main/Seven_Lib.lua"))()
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 
-local Window = Lib:Window("PHAN DINH BIEN", "by Biendepzai", Enum.KeyCode.RightControl)
+local Window = Fluent:CreateWindow({
+    Title = "PHAN DINH BIEN",
+    SubTitle = "by Biendepzai",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = false,
+    Theme = "Dark",
+    MinimizeKey = Enum.KeyCode.LeftControl
+})
 
-local MainTab = Window:Tab("Main Hub")
-local SeaKingTab = Window:Tab("SeaKing")
-local BienTab = Window:Tab("Biển")
+local Tabs = {
+    Main = Window:AddTab({ Title = "Main Hub", Icon = "home" }),
+    SeaKing = Window:AddTab({ Title = "SeaKing", Icon = "star" }),
+    Bien = Window:AddTab({ Title = "Biển", Icon = "rbxthumb://type=Asset&id=73480053684273&w=420&h=420" })
+}
 
-MainTab:Button("Redz Hub", function() 
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/huy384/redzHub/refs/heads/main/redzHub.lua"))() 
-end)
+-- TAB 1: MAIN HUB
+Tabs.Main:AddButton({
+    Title = "Redz Hub",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/huy384/redzHub/refs/heads/main/redzHub.lua"))() end
+})
 
-MainTab:Button("Server Finder", function() 
-    loadstring(game:HttpGet("https://rise-evo.xyz/apiv3/ServerFinder.lua"))() 
-end)
+Tabs.Main:AddButton({
+    Title = "Server Finder",
+    Callback = function() loadstring(game:HttpGet("https://rise-evo.xyz/apiv3/ServerFinder.lua"))() end
+})
 
-MainTab:Button("Xeter hub V4", function() 
-    getgenv().Version = "V4"
-    getgenv().Team = "Marines"
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))() 
-end)
+Tabs.Main:AddButton({
+    Title = "Xeter hub V4",
+    Callback = function() 
+        getgenv().Version = "V4"
+        getgenv().Team = "Marines"
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))() 
+    end
+})
 
-SeaKingTab:Button("QuanTum Hub", function() 
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))() 
-end)
+-- TAB 2: SEAKING
+Tabs.SeaKing:AddButton({
+    Title = "QuanTum Hub",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))() end
+})
 
-SeaKingTab:Button("Bacon Hub", function() 
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/vinh129150/hack/refs/heads/main/BaconHub.lua"))() 
-end)
+Tabs.SeaKing:AddButton({
+    Title = "Bacon Hub",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/vinh129150/hack/refs/heads/main/BaconHub.lua"))() end
+})
 
-SeaKingTab:Button("Huylovemy / key : Huydepzai", function() 
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Bear-hud-t-h/refs/heads/main/Huylovevkmy"))() 
-end)
+Tabs.SeaKing:AddButton({
+    Title = "Huylovemy / key : Huydepzai",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Bear-hud-t-h/refs/heads/main/Huylovevkmy"))() end
+})
 
-BienTab:Button("Blue X", function() 
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))() 
-end)
+-- TAB 3: BIỂN
+Tabs.Bien:AddButton({
+    Title = "Blue X",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))() end
+})
 
-BienTab:Button("Gravity Hub", function() 
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-GravityHub/BloxFruit/refs/heads/main/Main.lua"))() 
-end)
+Tabs.Bien:AddButton({
+    Title = "Gravity Hub",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-GravityHub/BloxFruit/refs/heads/main/Main.lua"))() end
+})
 
-BienTab:Button("Turbo Fix Lag", function() 
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main/FixLag.lua"))() 
-end)
+Tabs.Bien:AddButton({
+    Title = "Turbo Fix Lag",
+    Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main/FixLag.lua"))() end
+})
 
+-- TOGGLE BUTTON
 local ScreenGui = Instance.new("ScreenGui")
 local ToggleButton = Instance.new("ImageButton") 
 local UICorner = Instance.new("UICorner")
@@ -61,5 +86,7 @@ UICorner.CornerRadius = UDim.new(0, 15)
 UICorner.Parent = ToggleButton
 
 ToggleButton.MouseButton1Click:Connect(function()
-    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.RightControl, false, game)
+    Window:Minimize()
 end)
+
+Window:SelectTab(1)
