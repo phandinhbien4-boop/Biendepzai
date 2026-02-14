@@ -21,19 +21,16 @@ Tabs.Main:AddParagraph({ Title = "SeaKing 2012", Content = "Credit by SeaKing 20
 
 Tabs.Main:AddButton({
     Title = "Redz Hub",
-    Description = "Nhấn để chạy Redz Hub",
     Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/huy384/redzHub/refs/heads/main/redzHub.lua"))() end
 })
 
 Tabs.Main:AddButton({
     Title = "Server Finder",
-    Description = "Nhấn để chạy Server Finder",
     Callback = function() loadstring(game:HttpGet("https://rise-evo.xyz/apiv3/ServerFinder.lua"))() end
 })
 
 Tabs.Main:AddButton({
     Title = "Xeter hub V4",
-    Description = "Nhấn để chạy Xeter hub V4",
     Callback = function() 
         getgenv().Version = "V4"
         getgenv().Team = "Marines"
@@ -73,7 +70,7 @@ Tabs.Bien:AddButton({
     Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main/FixLag.lua"))() end
 })
 
--- ================= PHẦN NÚT BẬT/TẮT (TOGGLE) =================
+-- ================= NÚT BẬT/TẮT (TOGGLE) =================
 local ScreenGui = Instance.new("ScreenGui")
 local ToggleButton = Instance.new("ImageButton") 
 local UICorner = Instance.new("UICorner")
@@ -87,8 +84,8 @@ ToggleButton.BackgroundTransparency = 0.3
 ToggleButton.Size = UDim2.new(0, 60, 0, 60)
 ToggleButton.Position = UDim2.new(0, 20, 0.5, -30)
 
--- LINK ẢNH LUFFY CỦA BẠN (Dùng định dạng Thumbnail để không bị đen)
-ToggleButton.Image = "https://www.roblox.com/asset-thumbnail/image?assetId=73480053684273&width=420&height=420&format=png"
+-- Thử dùng link trực tiếp để ép Roblox hiện ảnh
+ToggleButton.Image = "http://www.roblox.com/asset/?id=73480053684273"
 
 ToggleButton.Active = true
 ToggleButton.Draggable = true
@@ -96,9 +93,7 @@ ToggleButton.Draggable = true
 UICorner.CornerRadius = UDim.new(0, 15)
 UICorner.Parent = ToggleButton
 
-local IsOpen = true
 ToggleButton.MouseButton1Click:Connect(function()
-    IsOpen = not IsOpen
     Window:Minimize()
 end)
 
