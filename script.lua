@@ -1,69 +1,48 @@
-local RedzLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/REDZHUB/RedzLibV2/main/redzlibv2.lua"))()
+local Lib = loadstring(game:HttpGet("https://raw.githubusercontent.com/7YSe7en/Seven_Lib/main/Seven_Lib.lua"))()
 
-local Window = RedzLib:MakeWindow({
-  Title = "PHAN DINH BIEN",
-  SubTitle = "by Biendepzai",
-  SaveFolder = "BienHub_Config.json"
-})
+local Window = Lib:Window("PHAN DINH BIEN", "by Biendepzai", Enum.KeyCode.RightControl)
 
-local MainTab = Window:CreateTab("Main Hub", "rbxassetid://4483362458")
-local SeaKingTab = Window:CreateTab("SeaKing", "rbxassetid://4483362458")
-local BienTab = Window:CreateTab("Biển", "rbxthumb://type=Asset&id=73480053684273&w=420&h=420")
+local MainTab = Window:Tab("Main Hub")
+local SeaKingTab = Window:Tab("SeaKing")
+local BienTab = Window:Tab("Biển")
 
-MainTab:AddSection("SeaKing 2012 - Credit by SeaKing 2012")
+MainTab:Button("Redz Hub", function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/huy384/redzHub/refs/heads/main/redzHub.lua"))() 
+end)
 
-MainTab:AddButton({
-  Name = "Redz Hub",
-  Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/huy384/redzHub/refs/heads/main/redzHub.lua"))() end
-})
+MainTab:Button("Server Finder", function() 
+    loadstring(game:HttpGet("https://rise-evo.xyz/apiv3/ServerFinder.lua"))() 
+end)
 
-MainTab:AddButton({
-  Name = "Server Finder",
-  Callback = function() loadstring(game:HttpGet("https://rise-evo.xyz/apiv3/ServerFinder.lua"))() end
-})
-
-MainTab:AddButton({
-  Name = "Xeter hub V4",
-  Callback = function() 
+MainTab:Button("Xeter hub V4", function() 
     getgenv().Version = "V4"
     getgenv().Team = "Marines"
     loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))() 
-  end
-})
+end)
 
-SeaKingTab:AddSection("SeaKing Collection")
+SeaKingTab:Button("QuanTum Hub", function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))() 
+end)
 
-SeaKingTab:AddButton({
-  Name = "QuanTum Hub",
-  Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))() end
-})
+SeaKingTab:Button("Bacon Hub", function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/vinh129150/hack/refs/heads/main/BaconHub.lua"))() 
+end)
 
-SeaKingTab:AddButton({
-  Name = "Bacon Hub",
-  Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/vinh129150/hack/refs/heads/main/BaconHub.lua"))() end
-})
+SeaKingTab:Button("Huylovemy / key : Huydepzai", function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Bear-hud-t-h/refs/heads/main/Huylovevkmy"))() 
+end)
 
-SeaKingTab:AddButton({
-  Name = "Huylovemy / key : Huydepzai",
-  Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Bear-hud-t-h/refs/heads/main/Huylovevkmy"))() end
-})
+BienTab:Button("Blue X", function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))() 
+end)
 
-BienTab:AddSection("Biển Collection")
+BienTab:Button("Gravity Hub", function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-GravityHub/BloxFruit/refs/heads/main/Main.lua"))() 
+end)
 
-BienTab:AddButton({
-  Name = "Blue X",
-  Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))() end
-})
-
-BienTab:AddButton({
-  Name = "Gravity Hub",
-  Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-GravityHub/BloxFruit/refs/heads/main/Main.lua"))() end
-})
-
-BienTab:AddButton({
-  Name = "Turbo Fix Lag",
-  Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main/FixLag.lua"))() end
-})
+BienTab:Button("Turbo Fix Lag", function() 
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main/FixLag.lua"))() 
+end)
 
 local ScreenGui = Instance.new("ScreenGui")
 local ToggleButton = Instance.new("ImageButton") 
@@ -82,5 +61,5 @@ UICorner.CornerRadius = UDim.new(0, 15)
 UICorner.Parent = ToggleButton
 
 ToggleButton.MouseButton1Click:Connect(function()
-  game:GetService("VirtualInputManager"):SendKeyEvent(true, "RightControl", false, game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.RightControl, false, game)
 end)
