@@ -16,7 +16,6 @@ local Tabs = {
     Bien = Window:AddTab({ Title = "Biển", Icon = "rbxassetid://73480053684273" })
 }
 
--- TAB MAIN
 Tabs.Main:AddParagraph({ Title = "SeaKing 2012", Content = "Credit by SeaKing 2012" })
 
 Tabs.Main:AddButton({
@@ -38,7 +37,6 @@ Tabs.Main:AddButton({
     end
 })
 
--- TAB SEAKING
 Tabs.SeaKing:AddButton({
     Title = "QuanTum Hub",
     Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua"))() end
@@ -54,7 +52,6 @@ Tabs.SeaKing:AddButton({
     Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Huylovemy/Bear-hud-t-h/refs/heads/main/Huylovevkmy"))() end
 })
 
--- TAB BIỂN
 Tabs.Bien:AddButton({
     Title = "Blue X",
     Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))() end
@@ -70,7 +67,6 @@ Tabs.Bien:AddButton({
     Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/TurboLite/Script/main/FixLag.lua"))() end
 })
 
--- PHẦN NÚT TOGGLE (BẮT BUỘC PHẢI CÓ ĐỂ MỞ LẠI MENU)
 local ScreenGui = Instance.new("ScreenGui")
 local ToggleButton = Instance.new("ImageButton") 
 local UICorner = Instance.new("UICorner")
